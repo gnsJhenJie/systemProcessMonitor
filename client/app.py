@@ -74,8 +74,9 @@ def send_msg():
             except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                 pass
         msg = json.dumps(communicateDict)
-        print(msg)
-        s.send(msg.encode("gbk"))
+        if communicateDict['processes']:
+            print(msg)
+            s.send(msg.encode("gbk"))
         time.sleep(5)
     os._exit(0)
 

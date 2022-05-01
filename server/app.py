@@ -54,6 +54,7 @@ class Server:
         self.sock.listen(5)
         print("伺服器已開啓，等待連接...")
 
+        # 建立用於接收新連線的thread
         threading.Thread(target=self.accept_connection).start()
         # self.accept_connection()
 
@@ -64,6 +65,7 @@ class Server:
             number = len(self.users)
             print("用戶端{}連接成功！現在共有{}個連線".format(addr, number))
 
+            # 每個socket連線都需要一個thread來receive訊息
             threading.Thread(target=self.receive, args=(s, addr)).start()
 
     def receive(self, sock, addr):
@@ -102,6 +104,7 @@ class Server:
                 break
 
     def send_configs(self, target=None):
+        """發布組態檔(哪些process需要被監視)"""
         msg = json.dumps(self.configDict)
         if target:
             print("send", msg)

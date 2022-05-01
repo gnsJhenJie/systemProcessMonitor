@@ -133,5 +133,6 @@ if __name__ == "__main__":
             configs.updateMonitorProcesses()
             server.configDict["monitorProcesses"] = configs.monitorProcesses
             server.send_configs()
+            print("已發佈新的process監聽組態")
         else:
             print("輸入指令無效，請重新輸入！")

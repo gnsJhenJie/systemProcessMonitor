@@ -5,7 +5,7 @@ port = 8805
 db_host = "127.0.0.1"
 db_port = 3306
 db_username = "root"
-db_password = "j3315938"
+db_password = "PASSWORD"
 db_dbname = "computerMonitor"
 db_charset = "utf8"
 
